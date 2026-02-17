@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <script src="https://cdn.tailwindcss.com/"></script>
+</head>
+<body>
+    <script type="module" src="quiz.js"></script>
+   <h1 class="bg-violet-500 w-full h-16  mt-4 flex items-center justify-center  font-bold  rounded-3xl shadow-xl
+ ">Quiz</h1>
+ 
+ <div class="w-[300px] h-[100px] bg-violet-200 mt-4  ml-auto mr-auto flex items-center justify-center rounded-3xl shadow-xl">
+    <h2>"What is your energy level today?</h2> 
+   
+</div>
+<div id="Q1">
+ <input  id="slider" type="range" min="1" max="10"  value="0" class="w-[300px] h-2 accent-violet-400 rounded-lg flex items-center justify-center mt-4 ml-auto mr-auto">
+ <div id="result" class="flex justify-center ">0</div>
+</div>
+
+
+<div class="w-[300px] h-[100px] bg-violet-200 mt-4  ml-auto mr-auto flex items-center justify-center rounded-3xl shadow-xl">
+    <h2 class="text-center"> How focused are you right now?</h2> 
+   
+</div>
+<div id="Q2">
+ <input  id="slider2" type="range" min="1" max="10"  value="0" class="w-[300px] h-2 accent-violet-400 rounded-lg flex items-center justify-center mt-4 ml-auto mr-auto">
+ <div id="result2" class="flex justify-center ">0</div>
+</div>
+
+
+
+<div class="w-[300px] h-[100px] bg-violet-200 mt-4  ml-auto mr-auto flex items-center justify-center rounded-3xl shadow-xl">
+    <h2 class="text-center">What is your motivation to complete your tasks today?</h2> 
+   
+</div>
+<div id="Q3">
+ <input  id="slider3" type="range" min="1" max="10"  value="0" class="w-[300px] h-2 accent-violet-400 rounded-lg flex items-center justify-center mt-4 ml-auto mr-auto">
+     <div id="result3" class="flex justify-center ">0</div>
+
+</div>
+
+<div class="flex justify-center mt-8">
+    <button id="seeSuggestion" class="bg-violet-500 hover:bg-violet-700  font-bold py-2 px-6 rounded-full shadow-lg transition">See suggestion</button>
+</div>
+ <div id="suggestion" class="mt-[10px]  font-bold text-center"></div>
+
+
+ 
+    
+</body>
+</html>
