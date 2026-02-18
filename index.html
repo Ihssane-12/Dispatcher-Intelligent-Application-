@@ -12,18 +12,44 @@
 
 <body>
     <div class="app">
-        <div class="border-md">
-            <h1 class="main-title main-title--center">Quiz</h1>
-        </div>
-        
-        <button class="primary-btn btn--block">Start Quiz</button>
-    </div>
+        <div class="task-form-card">
 
-    <nav class="nav">
-        <button id="home" class="btn"><i class="icon fa-regular fa-house"></i></button>
-        <button id="tasks" class="btn"><i class="icon fa-solid fa-clipboard-list"></i></button>
-        <button id="notifications" class="btn"><i class="icon fa-solid fa-bell"></i></button>
-    </nav>
+      <input 
+        type="text" 
+        placeholder="Title"
+        class="input"
+        data-field="title"
+      />
+
+      <select class="input" data-field="urgency">
+        <option value="">Urgency</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+
+      <select class="input" data-field="importance">
+        <option value="">Importance</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+
+      <select class="input" data-field="effort">
+        <option value="">Effort</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+
+    </div>
+    </div>
 </body>
 
 </html>

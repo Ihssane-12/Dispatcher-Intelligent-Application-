@@ -8,7 +8,7 @@ export function Header(title) {
 export function TasksHeader(title) {
     return `<div class="border-md">
                 <h1 class="main-title main-title--center">${title}</h1>
-                <button class="btn btn--secondary btn--icon"><i class="fa-solid fa-plus"></i></button>
+                <button class="btn btn--secondary btn--icon" data-action="open-add-task"><i class="fa-solid fa-plus"></i></button>
             </div>`
 }
 
@@ -18,14 +18,14 @@ export function TasksContainer(tasks) {
             </div>`
 }
 export function PrimaryButton(label,action){
-    return `<button class="primary-btn btn--block" data-action="${action}">${label}</button>`
+    return `<button type="button" class="primary-btn btn--block" data-action="${action}">${label}</button>`
 }
 
 function Navbar() {
     return `<nav class="nav">
-       <button id="home" class="btn"><i class="icon fa-regular fa-house"></i></button> 
-        <button id="tasks" class="btn"><i class="icon fa-solid fa-clipboard-list"></i></button>
-        <button id="notifications" class="btn"><i class="icon fa-solid fa-bell"></i></button>
+       <button class="btn" data-action="go-home"><i class="icon fa-regular fa-house"></i></button> 
+        <button class="btn" data-action="go-tasks"><i class="icon fa-solid fa-clipboard-list"></i></button>
+        <button class="btn" data-action="go-notifications"><i class="icon fa-solid fa-bell"></i></button>
     </nav>`
 }
 
@@ -35,9 +35,9 @@ function ListTasks(tasks) {
         for (const task of tasks) {
             const taskDiv = `<div class="task-border">
                 <p>${task.title}</p>
-                <div>
-                   <button class="btn" data-action="edit-task" data-id="${task.id}><i class="fa-solid fa-pen-to-square"></i></button>
-                   <button class="btn" data-action="delete-task" data-id="${task.id}><i class="fa-solid fa-trash"></i></button> 
+                <div class="task-actions">
+                   <button class="btn" data-action="edit-task" data-id="${task.id}"><i class="fa-solid fa-pen-to-square"></i></button>
+                   <button class="btn" data-action="delete-task" data-id="${task.id}"><i class="fa-solid fa-trash"></i></button> 
                 </div>
             </div>`
             taskslist.push(taskDiv)
@@ -62,10 +62,60 @@ function ListQuestions(questions){
 }
 function QuestionsContainer(questions){
     return `<div class="container">
-                ${ListQuestions()}
+                ${ListQuestions(questions)}
             </div>`
 }
+function CurrentTask(currentTask){
+    return `<div class="container">
+                <p class="task-title">${currentTask.title}</p>
+                <div class="btn-row">
+                ${PrimaryButton("Skip","skip-task")}
+                ${PrimaryButton("Mark as complete","complete-task")}
+                </div>
+            </div>`
+}
+function TaskForm() {
+  return `
+    <div class="task-form-card">
 
+      <input name="title"
+        type="text" 
+        placeholder="Title"
+        class="input"
+        data-field="title" required
+      />
+
+      <select name="urgency" class="input" data-field="urgency" required>
+        <option value="">Urgency</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+
+      <select name="importance" class="input" data-field="importance" required>
+        <option value="">Importance</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+
+      <select name="effort" class="input" data-field="effort" required>
+        <option value="">Effort</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+
+    </div>
+    ${PrimaryButton("Add task", "add-task")}
+  `;
+}
 
 export function MainLayout(tasks) {
     return `${Header("Recently Added Tasks")}
@@ -73,9 +123,20 @@ export function MainLayout(tasks) {
             ${PrimaryButton("Start Quiz","start-quiz")}
             ${Navbar()}`
 }
-export function QuizLayout(){
+export function QuizLayout(questions){
     return `${Header("Quiz")}
             ${QuestionsContainer(questions)}
-            ${PrimaryButton("Submit","submit")}
-            `
+            ${PrimaryButton("Submit","submit-quiz")}
+            ${Navbar()}`
+}
+export function TasksLayout(tasks){
+    return `${TasksHeader("Tasks Management")}
+            ${TaskForm()}
+            ${TasksContainer(tasks)}
+            ${Navbar()}`
+}
+export function CurrentTaskLayout(currentTask){
+    return `${Header("Current Task")}
+            ${CurrentTask(currentTask)}
+            ${Navbar()}`
 }
