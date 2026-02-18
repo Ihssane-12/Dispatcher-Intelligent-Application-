@@ -8,7 +8,7 @@
 }
 
 
-.btn {
+.primary-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,6 +16,16 @@
     background-color: $primary-color;
     border-radius: $radius-md;
     padding: $space-md $space-sm;
+    cursor: pointer;
+}
+.secondary-btn {
+    background-color: $primary-color;
+    border-radius: $radius-md;
+    padding: $space-sm $space-md;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
     cursor: pointer;
 }
 
@@ -47,22 +57,36 @@
     background-color: $secondary-color;
     box-shadow: 0 -6px 12px rgba(0, 0, 0, 0.15);
 }
-
-.header-border{
+.icon{
+  font-size: $size-lg;
+}
+.border-md{
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 8px;
   width: 100%;
   background-color: $secondary-color;
   padding: $space-md $space-sm;
 }
-
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+  padding: $space-md;
+  width: 100%;
+}
 .task-border{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   background-color: $secondary-color;
   border-radius: $radius-md;
-  padding: $space-md $space-sm;
+  padding: $space-xs $space-md;
+}
+
+.btn{
+  background: none;
+  border: none;
+  cursor: pointer;
 }

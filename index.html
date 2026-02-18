@@ -12,17 +12,41 @@
 
 <body>
     <div class="app">
-            <div class="header-border">
-                <h1 class="main-title main-title--center">Recently Added Tasks</h1>
-            </div> 
-            <div class="task-border">title 1</div>
-       <button class="btn btn--block">start</button>
-    </div>        
+        <div class="border-md">
+            <h1 class="main-title main-title--center">Recently Added Tasks</h1>
+            <button class="secondary-btn"><i class="fa-solid fa-plus"></i></button>
+        </div>
+        <div class="task-list">
+            <div class="task-border">
+                <p>task title</p>
+                <div>
+                    <button class="btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                    <button class="btn"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            </div>
+            <div class="task-border">
+                <p>task title</p>
+                <div>
+                    <button class="btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                    <button class="btn"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            </div>
+            <div class="task-border">
+                <p>task title</p>
+                <div>
+                    <button class="btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                    <button class="btn"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <button class="primary-btn btn--block">Start Quiz</button>
+    </div>
 
     <nav class="nav">
-        <i class="nav__icon fa-regular fa-house"></i>
-        <i class="nav__icon fa-solid fa-clipboard-list"></i>
-        <i class="nav__icon fa-solid fa-bell"></i>
+        <button id="home" class="btn"><i class="icon fa-regular fa-house"></i></button>
+        <button id="tasks" class="btn"><i class="icon fa-solid fa-clipboard-list"></i></button>
+        <button id="notifications" class="btn"><i class="icon fa-solid fa-bell"></i></button>
     </nav>
 </body>
 
