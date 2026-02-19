@@ -26,10 +26,13 @@ export const TodoManager = {
         };
         Storage.saveTask(newTask);
         titleInput.value = "";
-TodoManager.renderTasks();
-console.log("Task added successfully:", newTask);
+        TodoManager.renderTasks();
+        console.log("Task added successfully:", newTask);
+    },
+    renderTasks: () => {
+    const tasksList = document.getElementById('all-tasks-container');
+    if (!tasksList) return;
 
-
-
+    const tasks = Storage.getTasks();
     }
 }
