@@ -15,8 +15,17 @@ export const TodoManager = {
             alert(validation.message);
             return;
         }
+        const newTask = {
+            id: Date.now(),
+            title: titleValue.trim(),
+            urgency: parseInt(urgencyInput.value),
+            importance: parseInt(importanceInput.value),
+            effort: parseInt(effortInput.value),
+            status: 'pending',
+            createdAt: new Date().toISOString()
+        };
 
-        
+
 
     }
 }
