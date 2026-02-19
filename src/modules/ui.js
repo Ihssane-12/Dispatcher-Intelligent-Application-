@@ -8,7 +8,7 @@ export function Header(title) {
 export function TasksHeader(title) {
     return `<div class="border-md">
                 <h1 class="main-title main-title--center">${title}</h1>
-                <button class="btn btn--secondary btn--icon" data-action="open-add-task"><i class="fa-solid fa-plus"></i></button>
+                <button class="btn btn--secondary btn--icon" data-action="open-task-modal"><i class="fa-solid fa-plus"></i></button>
             </div>`
 }
 
@@ -74,48 +74,61 @@ function CurrentTask(currentTask){
                 </div>
             </div>`
 }
-function TaskForm() {
+function TaskModal() {
   return `
-    <div class="task-form-card">
+    <div id="taskModal" class="modal is-hidden">
 
-      <input name="title"
-        type="text" 
-        placeholder="Title"
-        class="input"
-        data-field="title" required
-      />
+      <div class="modal__backdrop"></div>
 
-      <select name="urgency" class="input" data-field="urgency" required>
-        <option value="">Urgency</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
+      <div class="modal__content">
 
-      <select name="importance" class="input" data-field="importance" required>
-        <option value="">Importance</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
+        <div class="task-form-card">
 
-      <select name="effort" class="input" data-field="effort" required>
-        <option value="">Effort</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
+          <input name="title"
+            type="text"
+            placeholder="Title"
+            class="input"
+            data-field="title"
+            required
+          />
+
+          <select name="urgency" class="input" data-field="urgency" required>
+            <option value="">Urgency</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+
+          <select name="importance" class="input" data-field="importance" required>
+            <option value="">Importance</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+
+          <select name="effort" class="input" data-field="effort" required>
+            <option value="">Effort</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+
+          ${PrimaryButton("Add task", "add-task")}
+
+        </div>
+
+      </div>
 
     </div>
-    ${PrimaryButton("Add task", "add-task")}
   `;
 }
+
 
 export function MainLayout(tasks) {
     return `${Header("Recently Added Tasks")}
@@ -131,9 +144,10 @@ export function QuizLayout(questions){
 }
 export function TasksLayout(tasks){
     return `${TasksHeader("Tasks Management")}
-            ${TaskForm()}
+            ${TaskModal()}
             ${TasksContainer(tasks)}
-            ${Navbar()}`
+            ${Navbar()}
+            `
 }
 export function CurrentTaskLayout(currentTask){
     return `${Header("Current Task")}
