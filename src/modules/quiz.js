@@ -9,3 +9,18 @@ const result3 = document.getElementById("result3");
 
 const seesuggestion = document.getElementById("seesuggestion");
 const suggestions = document.getElementById("suggestion");
+
+slider.addEventListener("input", () => {
+    result.textContent = slider.value;
+    checkSomm();
+});
+
+slider2.addEventListener("input", () => {
+    result2.textContent = slider2.value;
+    checkSomm();
+});
+
+slider3.addEventListener("input", () => {
+    result3.textContent = slider3.value;
+    checkSomm();
+});
