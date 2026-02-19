@@ -1,6 +1,6 @@
 function getbesttask(tasks,enrgy){
-    let besttask=null;
-    let hightscore = -1000;
+    let bestTask=null;
+    let highestScore = -1000;
 
     for(let i=0 ; i<length.tasks ; i++){
         let task = tasks[i]
@@ -12,6 +12,11 @@ function getbesttask(tasks,enrgy){
         }
         else if (enrgy>= 8){
             score = score - (task.effort *2);
+        }
+          // 4. Kan-choufu wach had l-tâche hiya l-wa3ra hta daba?
+        if (score > highestScore) {
+            highestScore = score;
+            bestTask = task;
         }
     }
 }
