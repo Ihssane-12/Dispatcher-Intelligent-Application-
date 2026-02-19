@@ -36,3 +36,10 @@ function checkSomm() {
     let somme = val1 + val2 + val3;
     moyenneStockee = somme / 3;
 }
+
+
+
+seesuggestion.addEventListener("click", function() {
+    checkSomm();
+    console.log("moyenne stockee", moyenneStockee);
+});
