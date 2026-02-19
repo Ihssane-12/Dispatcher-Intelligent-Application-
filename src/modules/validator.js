@@ -17,6 +17,7 @@ if (!Validator.titleRegex.test(value)) {
         message: "Tittle may-kounch fih special characters (ghir horof w ar9am)."
     };
 }
-
-}
+return { isValid: true };
+    }
 };
+
