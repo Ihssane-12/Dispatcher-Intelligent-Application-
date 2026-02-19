@@ -49,5 +49,6 @@ export const TodoManager = {
         `;
         tasksList.appendChild(taskDiv);
     });
+     TodoManager.initDeleteEvents();
     }
 }
