@@ -1,6 +1,6 @@
 
 let energy=3;
-let tasks=[{id:122 , titre:"Anass" , importance:3, enrgy:1  }]
+let tasks=[{id:122 , titre:"Anass" , importance:3, urgence:1 , energy:2  }]
 
 
 
