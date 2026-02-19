@@ -12,14 +12,14 @@ export function getbesttask(tasks, enrgy) {
 
     for(let i=0 ; i<tasks.length ; i++){
         let task = tasks[i]
-        let score = (task.importance *3) + ((task.urgence * 2));
+        let score = ((task.importance) * 3) + ((task.urgence) * 2);
 
         if(enrgy<= 3){
             // Cas user fatigue
-            score=score - (task.effort * 5);
+            score = score - ((task.effort) * 5);
         }
         else if (enrgy>= 8){
-            score = score - (task.effort *2);
+            score = score + ((task.effort) * 2);
         }
           // 4. defeculat taches?
         if (score > highestScore) {
