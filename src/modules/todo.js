@@ -50,5 +50,10 @@ export const TodoManager = {
         tasksList.appendChild(taskDiv);
     });
      TodoManager.initDeleteEvents();
-    }
+    },
+    initDeleteEvents: () => {
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+    deleteButtons.forEach(btn => {
+        
+    })}
 }
