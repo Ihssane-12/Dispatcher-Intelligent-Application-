@@ -35,5 +35,19 @@ export const TodoManager = {
 
     const tasks = Storage.getTasks();
     tasksList.innerHTML = "";
+        tasks.forEach(task => {
+        const taskDiv = document.createElement('div');
+        taskDiv.className = 'task-card';
+        
+        taskDiv.innerHTML = `
+            <div class="task-info">
+                <p class="task-tittle-text">${task.title}</p>
+            </div>
+            <button class="delete-btn" data-id="${task.id}" title="Supprimer">
+                🗑️
+            </button>
+        `;
+        tasksList.appendChild(taskDiv);
+    });
     }
 }
