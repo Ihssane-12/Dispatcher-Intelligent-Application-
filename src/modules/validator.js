@@ -10,6 +10,13 @@ if (value.length < 5 || value.length > 50) {
         message: "Tittle khasso ikoun bin 5 w 50 characters"
     };
 }
+// 2. Check Regex (no special chars)
+if (!Validator.titleRegex.test(value)) {
+    return {
+        isValid: false,
+        message: "Tittle may-kounch fih special characters (ghir horof w ar9am)."
+    };
+}
 
 }
 };
