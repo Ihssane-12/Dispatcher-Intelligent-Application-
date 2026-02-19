@@ -24,6 +24,7 @@ export const TodoManager = {
             status: 'pending',
             createdAt: new Date().toISOString()
         };
+        Storage.saveTask(newTask);
 
 
 
