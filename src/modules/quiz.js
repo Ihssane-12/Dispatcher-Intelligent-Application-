@@ -24,3 +24,15 @@ slider3.addEventListener("input", () => {
     result3.textContent = slider3.value;
     checkSomm();
 });
+
+
+let moyenneStockee = 0;
+
+function checkSomm() {
+    let val1 = parseInt(slider.value);
+    let val2 = parseInt(slider2.value);
+    let val3 = parseInt(slider3.value);
+
+    let somme = val1 + val2 + val3;
+    moyenneStockee = somme / 3;
+}
