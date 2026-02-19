@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tasks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+    <main class="min-h-screen flex flex-col gap-8 my-8 mx-2">
+        <div class="flex justify-center items-center gap-4 bg-[#E8DEF8] px-4 py-3">
+            <h1 class="font-bold text-center">Tasks Management</h1>
+            <button
+                class="flex justify-center items-center rounded-xl bg-[#A870BB] w-8 py-3 px-4 self-end cursor-pointer"><i
+                    class="fa-solid fa-plus"></i></button>
+        </div>
+        <div class="flex flex-col justify-center gap-2 w-full p-4">
+            <div class="flex justify-between items-center bg-[#E8DEF8] rounded-xl px-4 py-2">
+                <p>title</p>
+                <div class="flex gap-2 items-center">
+                    <button class="task-menu rounded-full size-5 cursor-pointer"> <i
+                            class="fa-solid fa-pen-to-square"></i> </button>
+                    <i class="fa-solid fa-trash"></i>
+
+                </div>
+
+            </div>
+            <div class="flex justify-between items-center bg-[#E8DEF8] rounded-xl px-4 py-2">
+                <p>title</p>
+                <div class="flex gap-2 items-center">
+                    <button class="task-menu rounded-full size-5 cursor-pointer"> <i
+                            class="fa-solid fa-pen-to-square"></i> </button>
+                    <i class="fa-solid fa-trash"></i>
+                </div>
+            </div>
+            <div class="flex justify-between items-center bg-[#E8DEF8] rounded-xl px-4 py-2">
+                <p>title</p>
+                <div class="flex gap-2 items-center">
+                    <button class="task-menu rounded-full size-5 cursor-pointer"> <i
+                            class="fa-solid fa-pen-to-square"></i> </button>
+                    <i class="fa-solid fa-trash"></i>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <nav
+        class="flex gap-6 h-16 px-4 justify-around items-center shadow-[0_-6px_12px_rgba(0,0,0,0.15)] rounded-xl bg-[#E8DEF8] sticky bottom-0">
+        <i class="fa-solid fa-house text-2xl"></i>
+        <i class="fa-solid fa-clipboard-list text-2xl"></i>
+        <i class="fa-solid fa-bell text-2xl"></i>
+    </nav>
+</body>
+
+</html>
