@@ -34,5 +34,6 @@ export const TodoManager = {
     if (!tasksList) return;
 
     const tasks = Storage.getTasks();
+    tasksList.innerHTML = "";
     }
 }
