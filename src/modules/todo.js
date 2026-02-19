@@ -25,6 +25,9 @@ export const TodoManager = {
             createdAt: new Date().toISOString()
         };
         Storage.saveTask(newTask);
+        titleInput.value = "";
+TodoManager.renderTasks();
+console.log("Task added successfully:", newTask);
 
 
 
