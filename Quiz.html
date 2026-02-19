@@ -7,7 +7,6 @@
     <script src="https://cdn.tailwindcss.com/"></script>
 </head>
 <body>
-    <script type="module" src="quiz.js"></script>
    <h1 class="bg-violet-500 w-full h-16  mt-4 flex items-center justify-center  font-bold  rounded-3xl shadow-xl
  ">Quiz</h1>
  
@@ -16,7 +15,7 @@
    
 </div>
 <div id="Q1">
- <input  id="slider" type="range" min="1" max="10"  value="0" class="w-[300px] h-2 accent-violet-400 rounded-lg flex items-center justify-center mt-4 ml-auto mr-auto">
+ <input  id="slider" type="range" min="1" max="10"  value="1" class="w-[300px] h-2 accent-violet-400 rounded-lg flex items-center justify-center mt-4 ml-auto mr-auto">
  <div id="result" class="flex justify-center ">0</div>
 </div>
 
@@ -43,12 +42,13 @@
 </div>
 
 <div class="flex justify-center mt-8">
-    <button id="seeSuggestion" class="bg-violet-500 hover:bg-violet-700  font-bold py-2 px-6 rounded-full shadow-lg transition">See suggestion</button>
+    <button id="seesuggestion" class="bg-violet-500 hover:bg-violet-700  font-bold py-2 px-6 rounded-full shadow-lg transition">See suggestion</button>
 </div>
  <div id="suggestion" class="mt-[10px]  font-bold text-center"></div>
 
 
  
-    
+       <script type="module" src="quiz.js"></script>
+ 
 </body>
 </html>
