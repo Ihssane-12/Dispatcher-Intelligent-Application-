@@ -1,19 +1,18 @@
 export const Storage = {
+
     getTasks: () => {
-        const tasks = localStorage.getItem('anti_saturator_tasks');
+        const tasks = localStorage.getItem("dispatcher_tasks");
         return tasks ? JSON.parse(tasks) : [];
     },
-     saveTask: (task) => {
+
+    saveTask: (task) => {
         const tasks = Storage.getTasks();
         tasks.push(task);
-        localStorage.setItem('anti_saturator_tasks', JSON.stringify(tasks));
+        localStorage.setItem("dispatcher_tasks", JSON.stringify(tasks));
     },
-     deleteTask: (id) => {
-        let tasks = Storage.getTasks();
-        tasks = tasks.filter(task => task.id !== id);
-        localStorage.setItem('anti_saturator_tasks', JSON.stringify(tasks));
+
+    deleteTask: (id) => {
+        const tasks = Storage.getTasks().filter(task => task.id !== id);
+        localStorage.setItem("dispatcher_tasks", JSON.stringify(tasks));
     }
 };
-
-
-

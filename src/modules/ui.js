@@ -1,4 +1,3 @@
-
 export function Header(title) {
     return `<div class="border-md">
                 <h1 class="main-title main-title--center">${title}</h1>
@@ -47,17 +46,30 @@ function ListTasks(tasks) {
     }
 
     return taskslist.join("")
+    //gdsyagxjxkjkisajnxkjoissklmnkkms
 }
 function ListQuestions(questions){
-        const questList = []
-        if (questions.length > 0) {
+    const questList = []
+
+    if (questions.length > 0) {
         for (const question of questions) {
-            const questDiv = `<div class="border-md">
-            <p>${question.title}</p>
-            </div>`
+
+            const questDiv = `
+                <div class="border-md">
+                    <p>${question.title}</p>
+                    <input 
+                        type="range" 
+                        min="1" 
+                        max="10" 
+                        value="5"
+                        class="quiz-slider"
+                    />
+                </div>
+            `
             questList.push(questDiv)
         }
     }
+
     return questList.join("")     
 }
 function QuestionsContainer(questions){
