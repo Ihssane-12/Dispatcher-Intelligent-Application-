@@ -1,33 +1,26 @@
+// src/modules/sorter.js
 
-let energy=3;
-let tasks=[{id:122 , titre:"Anass" , importance:3, urgence:1 , energy:2  }]
+export const Sorter = {
 
+  getRankedTasks: (tasks, energy) => {
 
+    if (!tasks || tasks.length === 0) return [];
 
-export function getbesttask(tasks, enrgy) {
-    if (!tasks || tasks.length === 0) return null;
+    return tasks
+      .map(task => {
 
-    let bestTask = null;
-    let highestScore = -1000;
+        let score = task.urgency * 3 + task.importance * 2;
 
-    for(let i=0 ; i<tasks.length ; i++){
-        let task = tasks[i]
-        let score = ((task.importance) * 3) + ((task.urgence) * 2);
-
-        if(enrgy<= 3){
-            // Cas user fatigue
-            score = score - ((task.effort) * 5);
+        if (energy <= 3) {
+          score -= task.effort * 5;
+        } else if (energy >= 8) {
+          score -= task.effort * 2;
+        } else {
+          score -= task.effort * 3;
         }
-        else if (enrgy>= 8){
-            score = score + ((task.effort) * 2);
-        }
-          // 4. defeculat taches?
-        if (score > highestScore) {
-            highestScore = score;
-            bestTask = task;
-        }
-    }
-    return bestTask;
-}
 
-console.log(getbesttask(tasks,energy));
+        return { ...task, computedScore: score };
+      })
+      .sort((a, b) => b.computedScore - a.computedScore);
+  }
+};
