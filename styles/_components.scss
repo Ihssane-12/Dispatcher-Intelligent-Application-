@@ -127,7 +127,7 @@
   gap: $space-sm;
 }
 
-.is-hidden {
+.modal.is-hidden {
   display: none;
 }
 
@@ -153,4 +153,16 @@
   position: relative;
   width: 100%;
   max-width: 420px;
+}
+
+.quiz-question {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+  width: 100%;
+}
+
+.slider {
+  width: 100%;
+  display: block;
 }

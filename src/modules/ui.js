@@ -48,23 +48,48 @@ function ListTasks(tasks) {
 
     return taskslist.join("")
 }
-function ListQuestions(questions){
-        const questList = []
-        if (questions.length > 0) {
-        for (const question of questions) {
-            const questDiv = `<div class="border-md">
+
+function ListQuestions(questions) {
+  const questList = [];
+
+  if (questions.length > 0) {
+    for (const question of questions) {
+      const questDiv = `
+        <div class="quiz-question">
+          <div class="border-md">
             <p>${question.title}</p>
-            </div>`
-            questList.push(questDiv)
-        }
+          </div>
+
+          <input
+            type="range"
+            min="1"
+            max="10"
+            value="5"
+            class="slider"
+            id="slider-${question.id}"
+            data-question-id="${question.id}"
+          />
+
+          <div class="slider-value" id="value-${question.id}">5</div>
+        </div>
+      `;
+      questList.push(questDiv);
     }
-    return questList.join("")     
+  } else {
+    questList.push(`<div>No questions available</div>`);
+  }
+
+  return questList.join("");
 }
-function QuestionsContainer(questions){
-    return `<div class="container">
-                ${ListQuestions(questions)}
-            </div>`
+
+function QuestionsContainer(questions) {
+  return `
+    <div class="container">
+      ${ListQuestions(questions)}
+    </div>
+  `;
 }
+
 function CurrentTask(currentTask){
     return `<div class="container">
                 <p class="task-title">${currentTask.title}</p>
@@ -77,54 +102,34 @@ function CurrentTask(currentTask){
 function TaskModal() {
   return `
     <div id="taskModal" class="modal is-hidden">
-
-      <div class="modal__backdrop"></div>
+      <div class="modal__backdrop" data-action="close-modal"></div>
 
       <div class="modal__content">
-
         <div class="task-form-card">
 
-          <input name="title"
-            type="text"
-            placeholder="Title"
-            class="input"
-            data-field="title"
-            required
-          />
+          <input name="title" type="text" placeholder="Title" class="input" data-field="title" required />
 
           <select name="urgency" class="input" data-field="urgency" required>
             <option value="">Urgency</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
+            <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+            <option value="4">4</option><option value="5">5</option>
           </select>
 
           <select name="importance" class="input" data-field="importance" required>
             <option value="">Importance</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
+            <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+            <option value="4">4</option><option value="5">5</option>
           </select>
 
           <select name="effort" class="input" data-field="effort" required>
             <option value="">Effort</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
+            <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+            <option value="4">4</option><option value="5">5</option>
           </select>
 
           ${PrimaryButton("Add task", "add-task")}
-
         </div>
-
       </div>
-
     </div>
   `;
 }
