@@ -1,23 +1,26 @@
-function getbesttask(tasks,enrgy){
-    let bestTask=null;
-    let highestScore = -1000;
+// src/modules/sorter.js
 
-    for(let i=0 ; i<length.tasks ; i++){
-        let task = tasks[i]
-        let score = (task.importance *3) + (task.enrgy *2);
+export const Sorter = {
 
-        if(enrgy<= 3){
-            // Cas user 3yan 
-            score=score - (task.effort * 5);
+  getRankedTasks: (tasks, energy) => {
+
+    if (!tasks || tasks.length === 0) return [];
+
+    return tasks
+      .map(task => {
+
+        let score = task.urgency * 3 + task.importance * 2;
+
+        if (energy <= 3) {
+          score -= task.effort * 5;
+        } else if (energy >= 8) {
+          score -= task.effort * 2;
+        } else {
+          score -= task.effort * 3;
         }
-        else if (enrgy>= 8){
-            score = score - (task.effort *2);
-        }
-          // 4. Kan-choufu wach had l-tâche hiya l-wa3ra hta daba?
-        if (score > highestScore) {
-            highestScore = score;
-            bestTask = task;
-        }
-    }
-    return bestTask;
-}
+
+        return { ...task, computedScore: score };
+      })
+      .sort((a, b) => b.computedScore - a.computedScore);
+  }
+};
