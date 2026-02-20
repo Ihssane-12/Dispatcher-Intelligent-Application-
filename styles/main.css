@@ -124,4 +124,42 @@
   gap: 8px;
 }
 
+.modal.is-hidden {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.modal__content {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+}
+
+.quiz-question {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.slider {
+  width: 100%;
+  display: block;
+}
+
 /*# sourceMappingURL=main.css.map */
