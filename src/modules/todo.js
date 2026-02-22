@@ -2,38 +2,42 @@ import { Storage } from './storage.js';
 import { Validator } from './validator.js';
 
 export const TodoManager = {
-    
+
     addTask: () => {
-        const titleInput = document.getElementById('task-title');
-        const urgencyInput = document.getElementById('urgency-select');
-        const importanceInput = document.getElementById('importance-select');
-        const effortInput = document.getElementById('effort-select');
 
-        const titleValue = titleInput.value;
+    const titleInput = document.querySelector('[data-field="title"]');
+    const urgencyInput = document.querySelector('[data-field="urgency"]');
+    const importanceInput = document.querySelector('[data-field="importance"]');
+    const effortInput = document.querySelector('[data-field="effort"]');
 
-        const validation = Validator.validateTitle(titleValue);
-        
-        if (!validation.isValid) {
-            alert(validation.message); 
-            return; 
-        }
+    const titleValue = titleInput.value;
 
-        const newTask = {
-            id: Date.now(),
-            title: titleValue.trim(),
-            urgency: parseInt(urgencyInput.value),
-            importance: parseInt(importanceInput.value),
-            effort: parseInt(effortInput.value),
-            status: 'pending',
-            createdAt: new Date().toISOString()
-        };
+    const validation = Validator.validateTitle(titleValue);
 
-        Storage.saveTask(newTask);
+    if (!validation.isValid) {
+        alert(validation.message);
+        return;
+    }
 
-        titleInput.value = "";
-        TodoManager.renderTasks();
-        console.log("Task added successfully:", newTask);
-    },
+    const newTask = {
+        id: Date.now(),
+        title: titleValue.trim(),
+        urgency: parseInt(urgencyInput.value),
+        importance: parseInt(importanceInput.value),
+        effort: parseInt(effortInput.value),
+        status: "pending",
+        createdAt: new Date().toISOString()
+    };
+
+    Storage.saveTask(newTask);
+
+    titleInput.value = "";
+    urgencyInput.value = "";
+    importanceInput.value = "";
+    effortInput.value = "";
+
+    alert("Task added successfully!");
+},
 
     renderTasks: () => {
         const tasksList = document.getElementById('all-tasks-container');
@@ -46,8 +50,8 @@ export const TodoManager = {
         tasks.forEach(task => {
             const taskDiv = document.createElement('div');
             taskDiv.className = 'task-card'; 
-            
-            taskDiv.innerHTML = `
+
+            taskDiv.innerHTML =`
                 <div class="task-info">
                     <p class="task-tittle-text">${task.title}</p>
                 </div>
