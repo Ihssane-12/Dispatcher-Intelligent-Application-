@@ -1,168 +1,237 @@
-.app {
+/* Variables dyalk m3a chwiya dyal l-optimization */
+$primary-color: #A870BB;
+$secondary-color: #EDE7F6;
+$radius-lg: 24px;
+$space-md: 16px;
+$space-lg: 24px;
+$shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
+$shadow-md: 0 8px 18px rgba(0,0,0,0.08);
+$font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+body {
+  background: #EDE7F6;
+  font-family: $font-family-base;
+  margin: 0;
+  padding: 0;
   min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ================= LAYOUT ENGINE ================= */
+.app-layout {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: $space-lg;
-  margin: $space-lg $space-sm;
-}
-
-
-.primary-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    background-color: $primary-color;
-    border-radius: $radius-md;
-    padding: $space-md $space-sm;
-    cursor: pointer;
-}
-.secondary-btn {
-    background-color: $primary-color;
-    border-radius: $radius-md;
-    padding: $space-sm $space-md;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    cursor: pointer;
-}
-
-.btn--block {
+  flex-direction: column; // Mobile default
+  min-height: 100vh;
   width: 100%;
 }
 
-.main-title{
-  font-weight: $font-weight-bold;
-  font-size: $title-primary-size;
-  font-family: $font-family-base;
-    &--center {
-    text-align: center;
+.content-wrapper {
+  flex: 1;
+  padding: 20px 16px 100px 16px; // Space for mobile nav
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ================= DESKTOP SIDEBAR & FULL SCREEN (992px+) ================= */
+@media (min-width: 992px) {
+  .app-layout {
+    flex-direction: row; // Sidebar f l-janb
+  }
+
+  .nav {
+    position: sticky !important;
+    top: 0;
+    left: 0 !important;
+    transform: none !important;
+    width: 100px !important; // 3erd dyal sidebar
+    height: 100vh !important;
+    flex-direction: column !important; // Icons vertical
+    justify-content: center !important;
+    gap: 40px;
+    border-radius: 0 40px 40px 0 !important;
+    box-shadow: 10px 0 30px rgba(0,0,0,0.05) !important;
+  }
+
+  .content-wrapper {
+    padding: 40px 60px;
+    max-width: none !important; // Chad chacha kamla
+  }
+
+  .grid-main {
+    display: grid;
+    grid-template-columns: 400px 1fr; // Form left, List right
+    gap: 40px;
+    align-items: start;
+  }
+
+  .grid-quiz {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    gap: 20px;
   }
 }
 
-.nav {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    height: 64px;
-    border-radius: $radius-lg;
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
-    // border-top-left-radius: $radius-md;
-    // border-top-right-radius: $radius-md;
-    background-color: $secondary-color;
-    box-shadow: 0 -6px 12px rgba(0, 0, 0, 0.15);
-}
-.icon{
-  font-size: $size-lg;
-}
-.border-md{
+/* ================= COMPONENT STYLES ================= */
+.border-md {
+  background-color: $primary-color;
+  border-radius: $radius-lg;
+  padding: $space-lg;
+  margin-bottom: $space-lg;
+  box-shadow: $shadow-sm;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
-  width: 100%;
-  background-color: $primary-color;
-  padding: $space-md $space-sm;
 }
+
+.main-title {
+  font-weight: 700;
+  font-size: 24px;
+  color: white;
+  margin: 0;
+  &--center { text-align: center; }
+}
+
 .container {
   display: flex;
   flex-direction: column;
-  gap: $space-sm;
-  padding: $space-md;
+  gap: $space-md;
   width: 100%;
 }
-.task-border{
+
+.container-action {
+    margin-top: 20px;
+}
+
+.task-border {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: $secondary-color;
-  border-radius: $radius-md;
-  padding: $space-xs $space-md;
-}
-
-.btn{
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.btn-row {
-  display: flex;
-  gap: $space-sm;
+  background-color: white;
+  border-radius: $radius-lg;
+  padding: $space-md;
+  box-shadow: $shadow-sm;
+  margin-bottom: 15px;
+  border-left: 6px solid $primary-color;
 }
 
 .task-form-card {
   display: flex;
   flex-direction: column;
-  gap: $space-sm;
-
-  width: 100%;
-  padding: $space-md;
-
+  gap: $space-md;
+  padding: $space-lg;
   background: white;
-  border-radius: $radius-md;
+  border-radius: $radius-lg;
   box-shadow: $shadow-md;
+  box-sizing: border-box;
 }
 
 .input {
   width: 100%;
   border: none;
   outline: none;
-
-  background-color: $secondary-color;
-  border-radius: $radius-md;
-
-  padding: $space-sm $space-md;
-
+  background-color: #F0E6F7;
+  border-radius: 12px;
+  padding: 14px 18px;
   font: inherit;
+  box-sizing: border-box;
+  &:focus { border: 1px solid $primary-color; }
 }
 
-.task-actions {
-  display: flex;
-  gap: $space-sm;
+.primary-btn {
+  background-color: $primary-color;
+  color: white;
+  font-weight: 700;
+  border: none;
+  border-radius: $radius-lg;
+  padding: 18px;
+  box-shadow: $shadow-md;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover { opacity: 0.9; transform: translateY(-2px); }
 }
 
-.modal.is-hidden {
-  display: none;
-}
+.btn--block { width: 100%; }
+.btn { background: none; border: none; cursor: pointer; }
+.btn-row { display: flex; gap: $space-md; }
 
-.modal {
+/* ================= NAVBAR (Mobile View) ================= */
+.nav {
   position: fixed;
-  inset: 0;
-  z-index: 1000;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: $space-md;
-}
-
-.modal__backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
-}
-
-.modal__content {
-  position: relative;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
   max-width: 420px;
+  height: 70px;
+  background: white;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
+}
+
+.icon { font-size: 24px; color: #555; }
+
+/* ================= QUIZ STYLES ================= */
+.quiz-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: $shadow-md;
+  border-left: 8px solid $primary-color;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
 .quiz-question {
-  display: flex;
-  flex-direction: column;
-  gap: $space-sm;
-  width: 100%;
+  background-color: #E9E2F5;
+  border-radius: 16px;
+  padding: 18px;
+  font-weight: 600;
+  text-align: center;
 }
 
-.slider {
+.quiz-slider {
   width: 100%;
-  display: block;
+  height: 10px;
+  border-radius: 20px;
+  background: #D9D9D9;
+  appearance: none;
+  outline: none;
+}
+
+.quiz-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: $primary-color;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 20px 0;
+  color: #555;
+  text-transform: uppercase;
+}
+
+.task-title {
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.empty-msg {
+  text-align: center;
+  padding: 40px;
+  color: #888;
+  font-style: italic;
 }
