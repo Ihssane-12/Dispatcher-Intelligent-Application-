@@ -1,4 +1,3 @@
-
 export function Header(title) {
     return `<div class="border-md">
                 <h1 class="main-title main-title--center">${title}</h1>
@@ -8,7 +7,6 @@ export function Header(title) {
 export function TasksHeader(title) {
     return `<div class="border-md">
                 <h1 class="main-title main-title--center">${title}</h1>
-                <button class="btn btn--secondary btn--icon" data-action="open-task-modal"><i class="fa-solid fa-plus"></i></button>
             </div>`
 }
 
@@ -17,7 +15,8 @@ export function TasksContainer(tasks) {
                 ${ListTasks(tasks)}
             </div>`
 }
-export function PrimaryButton(label,action){
+
+export function PrimaryButton(label, action) {
     return `<button type="button" class="primary-btn btn--block" data-action="${action}">${label}</button>`
 }
 
@@ -36,121 +35,125 @@ function ListTasks(tasks) {
             const taskDiv = `<div class="task-border">
                 <p>${task.title}</p>
                 <div class="task-actions">
-                   <button class="btn" data-action="edit-task" data-id="${task.id}"><i class="fa-solid fa-pen-to-square"></i></button>
                    <button class="btn" data-action="delete-task" data-id="${task.id}"><i class="fa-solid fa-trash"></i></button> 
                 </div>
             </div>`
             taskslist.push(taskDiv)
         }
     } else {
-        taskslist.push("<div>Tasks list is empty !!</div>")
+        taskslist.push("<div class='empty-msg'>Tasks list is empty !!</div>")
     }
-
     return taskslist.join("")
 }
-function ListQuestions(questions){
-        const questList = []
-        if (questions.length > 0) {
+
+function ListQuestions(questions) {
+    const questList = []
+    if (questions.length > 0) {
         for (const question of questions) {
-            const questDiv = `<div class="border-md">
-            <p>${question.title}</p>
-            </div>`
+            const questDiv = `
+                <div class="quiz-card">
+                    <div class="quiz-question">
+                        ${question.title}
+                    </div>
+                    <input 
+                        type="range" 
+                        min="1" 
+                        max="10" 
+                        value="5" 
+                        class="quiz-slider"
+                    />
+                </div>`
             questList.push(questDiv)
         }
     }
-    return questList.join("")     
+    return questList.join("")
 }
-function QuestionsContainer(questions){
-    return `<div class="container">
+
+function QuestionsContainer(questions) {
+    return `<div class="container grid-quiz">
                 ${ListQuestions(questions)}
             </div>`
 }
-function CurrentTask(currentTask){
+
+function CurrentTask(currentTask) {
     return `<div class="container">
                 <p class="task-title">${currentTask.title}</p>
                 <div class="btn-row">
-                ${PrimaryButton("Skip","skip-task")}
-                ${PrimaryButton("Mark as complete","complete-task")}
+                    ${PrimaryButton("Skip", "skip-task")}
+                    ${PrimaryButton("Mark as complete", "complete-task")}
                 </div>
             </div>`
 }
-function TaskModal() {
-  return `
-    <div id="taskModal" class="modal is-hidden">
-
-      <div class="modal__backdrop"></div>
-
-      <div class="modal__content">
-
-        <div class="task-form-card">
-
-          <input name="title"
-            type="text"
-            placeholder="Title"
-            class="input"
-            data-field="title"
-            required
-          />
-
-          <select name="urgency" class="input" data-field="urgency" required>
-            <option value="">Urgency</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-
-          <select name="importance" class="input" data-field="importance" required>
-            <option value="">Importance</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-
-          <select name="effort" class="input" data-field="effort" required>
-            <option value="">Effort</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-
-          ${PrimaryButton("Add task", "add-task")}
-
-        </div>
-
-      </div>
-
-    </div>
-  `;
-}
-
 
 export function MainLayout(tasks) {
-    return `${Header("Recently Added Tasks")}
+    return `
+    <div class="app-layout">
+        ${Navbar()}
+        <div class="content-wrapper">
+            ${Header("Recently Added Tasks")}
             ${TasksContainer(tasks)}
-            ${PrimaryButton("Start Quiz","start-quiz")}
-            ${Navbar()}`
+            <div class="container-action">
+                ${PrimaryButton("Start Quiz", "start-quiz")}
+            </div>
+        </div>
+    </div>`
 }
-export function QuizLayout(questions){
-    return `${Header("Quiz")}
+
+export function QuizLayout(questions) {
+    return `
+    <div class="app-layout">
+        ${Navbar()}
+        <div class="content-wrapper">
+            ${Header("QUIZ")}
             ${QuestionsContainer(questions)}
-            ${PrimaryButton("Submit","submit-quiz")}
-            ${Navbar()}`
+            <div class="container-action">
+                ${PrimaryButton("Submit", "submit-quiz")}
+            </div>
+        </div>
+    </div>`
 }
-export function TasksLayout(tasks){
-    return `${TasksHeader("Tasks Management")}
-            ${TaskModal()}
-            ${TasksContainer(tasks)}
-            ${Navbar()}
-            `
+
+export function TasksLayout(tasks) {
+    return `
+    <div class="app-layout">
+        ${Navbar()}
+        <div class="content-wrapper">
+            ${TasksHeader("Tasks")}
+            <main class="grid-main">
+                <section class="side-form">
+                    <div class="task-form-card">
+                        <input type="text" placeholder="Title" class="input" data-field="title" />
+                        <select class="input" data-field="urgency">
+                            <option value="">Urgency</option>
+                            <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                        </select>
+                        <select class="input" data-field="importance">
+                            <option value="">Importance</option>
+                            <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                        </select>
+                        <select class="input" data-field="effort">
+                            <option value="">Effort</option>
+                            <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                        </select>
+                        ${PrimaryButton("Add task", "add-task")}
+                    </div>
+                </section>
+                <section class="side-list">
+                    <h3 class="section-title">ALL THE TASKS</h3>
+                    ${ListTasks(tasks)}
+                </section>
+            </main>
+        </div>
+    </div>`
 }
-export function CurrentTaskLayout(currentTask){
-    return `${Header("Current Task")}
+
+export function CurrentTaskLayout(currentTask) {
+    return `
+    <div class="app-layout">
+        ${Navbar()}
+        <div class="content-wrapper">
+            ${Header("Current Task")}
             ${CurrentTask(currentTask)}
-            ${Navbar()}`
+        </div>
+    </div>`
 }
