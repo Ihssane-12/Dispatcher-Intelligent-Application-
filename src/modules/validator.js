@@ -20,3 +20,4 @@ if (!Validator.titleRegex.test(value)) {
 return { isValid: true };
     }
 };
+

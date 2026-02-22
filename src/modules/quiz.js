@@ -1,3 +1,5 @@
+// src/modules/quiz.js
+
 export const Quiz = {
   calculateEnergy: () => {
     const sliders = document.querySelectorAll(".quiz-slider");

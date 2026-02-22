@@ -1,3 +1,5 @@
+// src/modules/sorter.js
+
 export const Sorter = {
 
   getRankedTasks: (tasks, energy) => {

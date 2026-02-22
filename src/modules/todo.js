@@ -2,7 +2,6 @@ import { Storage } from './storage.js';
 import { Validator } from './validator.js';
 
 export const TodoManager = {
-
     addTask: () => {
 
     const titleInput = document.querySelector('[data-field="title"]');
@@ -50,8 +49,8 @@ export const TodoManager = {
         tasks.forEach(task => {
             const taskDiv = document.createElement('div');
             taskDiv.className = 'task-card'; 
-
-            taskDiv.innerHTML =`
+            
+            taskDiv.innerHTML = `
                 <div class="task-info">
                     <p class="task-tittle-text">${task.title}</p>
                 </div>
